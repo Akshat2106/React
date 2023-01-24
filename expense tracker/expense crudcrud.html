@@ -8,7 +8,7 @@
     <header style="color: maroon;font-size: 400%;"> Expense Tracker</header>
 </head>
 <body>
-    <label>Expense Amount:</label> <input type="text" id="1">
+    <label>Expense Amount:</label><input type="text" id="1">
     <label>Choose Description:</label><input type="text" id="2">
     <label>Choose a Category:</label>
     <select name="typeofexpense" id="3">
@@ -107,13 +107,7 @@ function getRequest () {
             deleteBtn.addEventListener('click' , deleteFunction);
 
 
-            //Edit Button
-            let editBtn = document.createElement('button');
-            editBtn.type = 'button';
-            editBtn.innerText = 'Edit Expenses';
-            newList.appendChild(editBtn);
-            editBtn.addEventListener('click' , editFunction);
-
+            
 
             //deleteExpense Function
 
@@ -131,6 +125,12 @@ function getRequest () {
                 sendDeleteRequest();
             };
 
+            //Edit Button
+            let editBtn = document.createElement('button');
+            editBtn.type = 'button';
+            editBtn.innerText = 'Edit Expenses';
+            newList.appendChild(editBtn);
+            editBtn.addEventListener('click' , editFunction);
 
             //editExpense Function
             function editFunction () {
