@@ -67,8 +67,6 @@ function getRequest () {
         try {
             const resp = await axios.get("https://crudcrud.com/api/7e0d9930052d4099b95863448145e30f/addExpenseDetails");
 
-           // console.log(resp.data); //Just for self Analysis
-
             for(let i=0;i<resp.data.length;i++) {
                 displayInputFromUser(resp.data[i]);
             };
