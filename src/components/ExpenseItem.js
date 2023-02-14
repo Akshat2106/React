@@ -1,35 +1,27 @@
 import React,{useState} from 'react';
-import ExpenseDate from './ExpenseDate'
-import ExpenseAmount from './ExpenseDetails'
-import './ExpenseItem.css'
+import './ExpenseItem.css';
+import ExpenseDate from './ExpenseDate.js';
+import ExpenseDetail from './ExpenseDetails.js';
+const ExpenseItem=(props)=> {
+  const [title,setTitle]=useState(props.exptitle);
+  const [expense,setExpense]=useState(props.expamount);
 
-const ExpenseItem=(props)=>{
-    const [title,setTitle]=useState(props.title);
-  const [expense,setExpense]=useState(props.amount);
-
-    const click = () => {
-        setTitle("updated");
-        console.log(title);
-    };
-    const clickUpdate=()=>{
-        setExpense("100");
-    }
-    return (
-    
-        <div className="expense-item">
-            <ExpenseDate date={props.date}/>
-            <div className="expense-item__description">
-                <h2>{props.title}</h2>
-                <h2>{props.location}</h2>
-                <div>
-                <ExpenseAmount amount={props.amount}/>
-            </div>
-            <button onClick={clickUpdate}>update Expense</button>
-            <button onClick={click}>update title</button>
-
-            </div>
-        </div>
-
-    )
+  const clickHandler=()=>{
+    setTitle("Updated");
+    console.log(title);
+  }
+  const clickUpdateExpense=()=>{
+    setExpense("100");
+  }
+  return (
+    <>
+      <div className="expense-item">
+        <ExpenseDate expdate={props.expdate}/>
+        <ExpenseDetail exptitle={title} expamount={expense}/>
+        <button onClick={clickUpdateExpense}>Update Expense</button>
+        <button onClick={clickHandler}>Update Title</button>
+      </div>
+    </>
+  )
 }
-export default ExpenseItem
+export default ExpenseItem;
