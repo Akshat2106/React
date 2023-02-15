@@ -1,5 +1,5 @@
 import "./App.css";
-import ExpenseForm from "./components/ExpenseForm";
+import ExpenseForm from "./components/NewExpense/ExpenseForm";
 import ExpenseItem from "./components/ExpenseItem";
 const App=()=> {
   const expenses = [
