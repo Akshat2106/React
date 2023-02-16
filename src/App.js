@@ -1,7 +1,15 @@
 import "./App.css";
+import React,{useState} from 'react'
 import ExpenseForm from "./components/NewExpense/ExpenseForm";
 import ExpenseItem from "./components/ExpenseItem";
+import ExpensesFilter from "./components/ExpenseFilter";
 const App=()=> {
+  const [filteredYear,setFilteredYear]=useState('2020');
+
+  const handleYear=async (year)=>{
+    setFilteredYear(year);
+    console.log(filteredYear);
+  }
   const expenses = [
     {
       id: 'e1',
@@ -43,6 +51,7 @@ const App=()=> {
     <div style={{backgroundColor:"greenyellow"}} className='new-expense'>
       <h1>Lets get started!!</h1>
      <ExpenseForm onSaveExpenseData={addExpensehandler} />
+     <ExpensesFilter currentYear={filteredYear} selectYear={handleYear}/>
       {expenses.map((ele)=>{
       return <ExpenseItem key={ele.id} exptitle={ele.title} expamount={ele.amount} expdate={ele.date}/>
       })}
