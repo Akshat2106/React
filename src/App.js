@@ -27,12 +27,24 @@ const App=()=> {
       date: new Date(2021, 5, 12),
     },
   ];
+
+  const addExpensehandler=expense=>{
+    console.log('In App.js');
+    console.log(expense);
+
+    expense.push({
+      id:expense.id,
+      title: expense.title,
+      amount:expense.amount,
+      date: expense.date
+    })
+  }
   return (
-    <div style={{backgroundColor:"gray"}}>
+    <div style={{backgroundColor:"greenyellow"}} className='new-expense'>
       <h1>Lets get started!!</h1>
-     <ExpenseForm/>
+     <ExpenseForm onSaveExpenseData={addExpensehandler} />
       {expenses.map((ele)=>{
-        return <ExpenseItem key={ele.id} exptitle={ele.title} expamount={ele.amount} expdate={ele.date}/>
+      return <ExpenseItem key={ele.id} exptitle={ele.title} expamount={ele.amount} expdate={ele.date}/>
       })}
     </div>
   );
