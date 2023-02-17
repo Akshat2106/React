@@ -1,27 +1,17 @@
-import "./App.css";
-import React,{useState} from 'react'
-import ExpenseForm from "./components/NewExpense/ExpenseForm";
-import ExpenseItem from "./components/ExpenseItem";
-import ExpensesFilter from "./components/ExpenseFilter";
-const App=()=> {
-  const [filteredYear,setFilteredYear]=useState('2020');
 
-  const handleYear=async (year)=>{
-    setFilteredYear(year);
-    console.log(filteredYear);
-  }
-  const expenses = [
+import React, { useState } from 'react'
+import NewExpense from './components/NewExpense/NewExpense';
+import Expenses from './components/Expenses/Expenses';
+
+const App = () => {
+  const  dummy_expenses = [
     {
       id: 'e1',
       title: 'Toilet Paper',
       amount: 94.12,
       date: new Date(2020, 7, 14),
     },
-    { 
-      id: 'e2', 
-      title: 'New TV',
-      amount: 799.49,
-      date: new Date(2021, 2, 12) },
+    { id: 'e2', title: 'New TV', amount: 799.49, date: new Date(2021, 2, 12) },
     {
       id: 'e3',
       title: 'Car Insurance',
@@ -35,27 +25,21 @@ const App=()=> {
       date: new Date(2021, 5, 12),
     },
   ];
+  const [expense,setExpenses]=useState(dummy_expenses);
 
-  const addExpensehandler=expense=>{
-    console.log('In App.js');
-    console.log(expense);
-
-    expense.push({
-      id:expense.id,
-      title: expense.title,
-      amount:expense.amount,
-      date: expense.date
+  const addExpensehandler=(expense)=>{
+   
+    setExpenses((prevExpenses)=>{
+      return [expense,...prevExpenses];
     })
   }
-  return (
-    <div style={{backgroundColor:"greenyellow"}} className='new-expense'>
-      <h1>Lets get started!!</h1>
-     <ExpenseForm onSaveExpenseData={addExpensehandler} />
-     <ExpensesFilter currentYear={filteredYear} selectYear={handleYear}/>
-      {expenses.map((ele)=>{
-      return <ExpenseItem key={ele.id} exptitle={ele.title} expamount={ele.amount} expdate={ele.date}/>
-      })}
+
+ return (
+    <div>
+      <NewExpense onAddExpense={addExpensehandler} />
+      <Expenses items={expense} />
     </div>
   );
 }
+
 export default App;
