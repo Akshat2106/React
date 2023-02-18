@@ -16,6 +16,21 @@ const Expenses = (props) => {
   const handleFilter=(year)=>{
     return year;
   }
+   let expenseContent=<p className='expense-item' style={{background:"orange",color:"black"}}>Expense not Found.</p>
+  if(filterExpenses.length>0){
+    expenseContent=filterExpenses.map((ele)=>{
+        return <ExpenseItem key={ele.id} exptitle={ele.title} expamount={ele.amount} expdate={ele.date}/>
+      })
+  }
+  if(filterExpenses.length===1){
+    expenseContent=filterExpenses.map((ele)=>{
+        return (<>
+      <ExpenseItem key={ele.id} exptitle={ele.title} expamount={ele.amount} expdate={ele.date}/>
+      <p className='expense-item' style={{background:"green",color:"white"}}>Only single Expense here. Please add more...</p>
+        </>
+        )
+      })
+  }
   return (
     
     <div>
