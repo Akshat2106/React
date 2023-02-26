@@ -22,7 +22,7 @@ const CourseInput = props => {
         <input type="text" onChange={goalInputChangeHandler} />
       </div>
       <Button type="submit">Add Goal</Button>
-    </form>
+    </form>  
   );
 };
 

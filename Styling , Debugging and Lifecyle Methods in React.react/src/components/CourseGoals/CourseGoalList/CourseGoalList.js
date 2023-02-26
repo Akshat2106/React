@@ -20,3 +20,4 @@ const CourseGoalList = props => {
 };
 
 export default CourseGoalList;
+  
